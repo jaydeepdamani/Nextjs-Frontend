@@ -1,35 +1,28 @@
-import React from 'react'
-import Link from "next/link";
-import {fetchAPI} from "../lib/api";
+import React, {useEffect, useState} from 'react'
+import axios from 'axios'
 
-const PrivacyPolicy = ({policies}) => {
+const PrivacyPolicy = () => {
+
+    const [policies,setPolicies] = useState([]);
+
+
+    useEffect(() => {
+        axios.get("http://localhost:1337/api/policies").then(res => setPolicies(res.data.data))
+    }, [])
 
     return (
         <div className="container">
             {
-                policies.data.map((itm, i) =>
+                policies.map((itm, i) =>
                     <div key={itm.id}>
                         <h2>{itm.attributes.policy_title}</h2>
                         <p>{itm.attributes.policy_content}</p>
                     </div>
                 )
             }
+            <h1>ABsabsdkj</h1>
         </div>
     );
 };
 
 export default PrivacyPolicy;
-
-
-export async function getStaticProps() {
-    // Run API calls in parallel
-    const [policies] = await Promise.all([
-        fetchAPI("/policies"),
-
-    ])
-
-    return {
-        props: {policies},
-        revalidate: 1,
-    }
-}

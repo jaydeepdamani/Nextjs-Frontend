@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import axios from "axios";
 
-const Nav = ({headers}) => {
+const Nav = () => {
+
+    const [headers,setHeaders] = useState([]);
+
+
+    useEffect(() => {
+        axios.get("http://localhost:1337/api/headers").then(res => setHeaders(res.data.data))
+    }, [])
+
 
     return (
         <div className="container-fluid bg-dark">
@@ -12,7 +21,7 @@ const Nav = ({headers}) => {
                 <div className="d-inline-block">
                     <ul className="list-unstyled m-0">
                         {
-                            headers.data.map((itm, i) =>
+                            headers.map((itm, i) =>
                                 <div key={itm.id}>
                                     <Link href={"/contact-us"}>
                                         <a className="d-inline-block text-primary me-5">{itm.attributes.btn_contact_us_link}</a>

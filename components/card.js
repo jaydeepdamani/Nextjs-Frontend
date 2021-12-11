@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react'
+import axios from "axios";
 
-const Card = ({homepage}) => {
+const Card = () => {
+    const [homepage,setHomepage] = useState(null);
+
+    useEffect(() => {
+        axios.get("http://localhost:1337/api/homepage").then(res => setHomepage(res.data.data))
+    }, [])
+
+
     return(
         <>
             <div className="card-main">
                 <h2>
-                    {homepage.data.attributes.banner_title}
+                    {homepage?.attributes.title}
                 </h2>
             </div>
 

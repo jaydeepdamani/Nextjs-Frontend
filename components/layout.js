@@ -1,8 +1,8 @@
 import Nav from "./nav"
 
-const Layout = ({ children, headers }) => (
+const Layout = ({ children }) => (
     <>
-        <Nav headers={headers} />
+        <Nav />
         {children}
     </>
 )
