@@ -31,8 +31,10 @@ const ContactUs = () => {
 
         if (true) {
             API.post('api/contact-uses', {
-                name: state.name,
-                email: state.email
+                data: {
+                    name: state.name,
+                    email: state.email
+                }
             })
                 .then(res => {
                     window.alert("Thank You")
