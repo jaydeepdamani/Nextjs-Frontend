@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import axios from 'axios'
+
+import API from '../utils/api';
 
 const PrivacyPolicy = () => {
 
@@ -7,7 +8,9 @@ const PrivacyPolicy = () => {
 
 
     useEffect(() => {
-        axios.get("http://localhost:1337/api/policies").then(res => setPolicies(res.data.data))
+        API.get("api/policies")
+            .then(res => setPolicies(res.data.data))
+            .catch(e => console.log(e))
     }, [])
 
     return (

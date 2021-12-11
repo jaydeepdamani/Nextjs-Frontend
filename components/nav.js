@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import Link from 'next/link'
-import axios from "axios";
+
+import API from '../utils/api';
 
 const Nav = () => {
 
-    const [headers,setHeaders] = useState([]);
+    const [headers, setHeaders] = useState([]);
 
 
     useEffect(() => {
-        axios.get("http://localhost:1337/api/headers").then(res => setHeaders(res.data.data))
+        API.get("api/headers")
+            .then(res => setHeaders(res.data.data))
+            .catch(e => console.log(e))
     }, [])
 
 
