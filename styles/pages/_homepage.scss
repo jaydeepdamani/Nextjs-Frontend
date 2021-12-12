@@ -1,12 +1,17 @@
-.card-main{
+.card-main {
   height: calc(100vh - 60px);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  h1{
+
+  h1 {
     font-size: 5vw;
     color: $white;
     z-index: 1;
+
+    @media screen and (max-width: 567px) {
+      font-size: 7vw;
+    }
   }
 }

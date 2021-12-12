@@ -63,8 +63,8 @@ const ContactUs = () => {
         <Layout>
             <section className="contact-us-main">
                 <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="contact-us-form col-12 col-md-5 p-5">
+                    <div className="row justify-content-center p-3">
+                        <div className="contact-us-form col-12 col-md-7 col-lg-5 p-4 p-md-5">
                             <h2 className="text-center text-primary">Contact Us</h2>
                             <form className="mt-5">
                                 <div className="mb-3">

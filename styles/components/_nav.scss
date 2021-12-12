@@ -1,4 +1,4 @@
-.header-main{
+.header-main {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,19 +7,23 @@
   background-color: $theme-black;
   border-bottom: 1px solid $theme-primary;
 
-  .logo{
-    font-size: 22px;
-    line-height: 26px;
+  .logo {
+    font-size: 18px;
+    line-height: 20px;
     text-transform: uppercase;
+    @media screen and (max-width: 576px) {
+      font-size: 16px;
+    }
   }
 
-  .header-items{
-    a{
+  .header-items {
+    a {
       transition: 0.5s ease all;
       color: $theme-primary;
       font-size: 14px;
       line-height: 16px;
-      &:hover{
+
+      &:hover {
         color: $white;
       }
     }
