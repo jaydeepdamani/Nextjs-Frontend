@@ -1,6 +1,12 @@
 import React, {useState} from 'react';
+import Layout from "../components/Layout";
 
 import API from '../utils/api';
+import {errorHandler} from "../utils/helper";
+import Toast from "../utils/toastSweetAlert";
+import Input from "../components/Input";
+import Button from "../components/Button";
+import validateContactUs from "../validations/contactUsValidation";
 
 const ContactUs = () => {
 
@@ -27,9 +33,9 @@ const ContactUs = () => {
     }
 
     const handleSubmit = () => {
-        /*const {errors, isValid} = validateLogin(state)*/
+        const {errors, isValid} = validateContactUs(state)
 
-        if (true) {
+        if (isValid) {
             API.post('api/contact-uses', {
                 data: {
                     name: state.name,
@@ -37,45 +43,62 @@ const ContactUs = () => {
                 }
             })
                 .then(res => {
-                    window.alert("Thank You")
+                    Toast.fire({
+                        icon: 'success',
+                        title: "Thank you for contacting Jamstack",
+                        background: '#191c27',
+                        color: '#00d09c',
+                    })
                     console.log(res)
                 })
-                .catch(e => console.log(e))
+                .catch(e =>
+                    errorHandler(e).then(r => r)
+                )
         } else {
-            /*setError(errors)*/
+            setError(errors)
         }
     }
 
     return (
-        <div>
-            <form>
-                <div className="mb-3">
-                    <label className="form-label">Name</label>
-                    <input type="text"
-                           className="form-control"
-                           id="name"
-                           value={state.name}
-                           onChange={handleChange}
-                    />
+        <Layout>
+            <section className="contact-us-main">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="contact-us-form col-12 col-md-5 p-5">
+                            <h2 className="text-center text-primary">Contact Us</h2>
+                            <form className="mt-5">
+                                <div className="mb-3">
+                                    <Input
+                                        placeholder={"Enter your name"}
+                                        type="text"
+                                        className="form-control"
+                                        id="name"
+                                        value={state.name}
+                                        handleChange={handleChange}
+                                    />
+                                    <div className="mt-2 text-left text-danger d-block f-12">{error?.name}</div>
+                                </div>
+                                <div className="mb-3">
+                                    <Input
+                                        placeholder={"Enter your email"}
+                                        type="email"
+                                        id="email"
+                                        value={state.email}
+                                        handleChange={handleChange}
+                                    />
+                                    <div className="mt-2 text-left text-danger d-block f-12">{error?.email}</div>
+                                </div>
+                            </form>
+                            <div className="text-center mt-5">
+                                <Button handler={handleSubmit} text={"Submit"}/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="mb-3">
-                    <label className="form-label">Email</label>
-                    <input
-                        type="email"
-                        className="form-control"
-                        id="email"
-                        value={state.email}
-                        onChange={handleChange}
-                    />
-                </div>
-            </form>
-            <button onClick={handleSubmit}>Submit</button>
-        </div>
+            </section>
+
+        </Layout>
     );
 };
 
 export default ContactUs;
-
-export async function getStaticProps({preview = false}) {
-    return {props: {}}
-}

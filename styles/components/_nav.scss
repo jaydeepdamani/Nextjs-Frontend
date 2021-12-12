@@ -1,0 +1,27 @@
+.header-main{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: $theme-black;
+  border-bottom: 1px solid $theme-primary;
+
+  .logo{
+    font-size: 22px;
+    line-height: 26px;
+    text-transform: uppercase;
+  }
+
+  .header-items{
+    a{
+      transition: 0.5s ease all;
+      color: $theme-primary;
+      font-size: 14px;
+      line-height: 16px;
+      &:hover{
+        color: $white;
+      }
+    }
+  }
+}

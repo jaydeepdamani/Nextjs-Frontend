@@ -1,0 +1,13 @@
+.contact-us-main{
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .contact-us-form{
+    background-color: transparent;
+    border: 1px solid $theme-primary;
+    border-radius: 30px;
+    box-shadow: 0 10px 15px -3px rgb(251 251 251 / 0.1), 0 4px 6px -4px rgb(251 251 251 / 0.1);
+  }
+}

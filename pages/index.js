@@ -1,6 +1,6 @@
-import React from "react"
-import Layout from "../components/layout"
-import Card from "../components/card";
+import React from "react";
+import Layout from "../components/Layout";
+import Card from "../components/Card";
 
 const Home = ({homepage}) => {
     return (
@@ -12,4 +12,4 @@ const Home = ({homepage}) => {
     )
 }
 
-export default Home
+export default Home;
