@@ -34,7 +34,7 @@ const Nav = () => {
                             headers.map((itm, i) =>
                                 <div key={itm.id}>
                                     <Link href={"/contact-us"}>
-                                        <a className="d-inline-block me-3 me-md-5">{itm.attributes.btn_contact_us_link}</a>
+                                        <a className="d-inline-block me-2 me-md-5">{itm.attributes.btn_contact_us_link}</a>
                                     </Link>
                                     <Link href={"/privacy-policy"}>
                                         <a className="d-inline-block">{itm.attributes.btn_privacy_link}</a>
